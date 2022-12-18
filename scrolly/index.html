@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Sticky</title>
+
+    <script src="https://unpkg.com/enter-view@1.0.0/enter-view.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+    
+</head>
+
+<script type="module" src="data.js"></script>
+
+<body>
+    
+    <section class='filler'>
+        <h2 style="margin-top: 5rem;">
+            This is a demo for sticky scrolling 
+        </h2>
+        <p>
+            This page is an example of integrating a scrollytelling method -<i>sticky css position</i>- with d3. D3 is not used as a charting library but as a short hand to retrieve DOM elements.
+        </p>
+        <p>
+            Animated bar chart is drawn using d3 as well as a div with its width adjusted by scroll. Data.js contains a very simple dictionary containing indexes and values. Floating boxes are generated using D3 based on data values. All animations are generated through CSS. 
+        </p>
+    </section>
+      
+    <section id='scrolly-overlay'>
+    
+        <div class='scrolly'>
+            
+            <!--  sticky graphic   -->
+            <figure class='sticky'>
+                <div class='bar-outer'>
+                    <div class='bar-inner'></div>
+                </div>
+            </figure>
+        
+            <!--  step text goes here -> from D3 -->
+
+        </div>
+    
+    </section>
+      
+    <section class="filler">
+        <p>
+            Here is a chart using the same data. 
+        </p>
+        <p>
+            Data object is converted to an array and each section is represented with its corresponding width. 
+            <ol>
+                <li>Convert Data to list</li>
+                <li>Create DOM elements</li>
+                <li>Create axes</li>
+                <li>Create bars</li>
+            </ol>
+        </p>
+    </section>
+
+    <div class='bar-chart'></div>
+
+
+    <section class="filler">
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos ex hic, modi dicta velit at impedit, molestiae nihil sed veniam, fugiat vel. Nulla, dolorem accusantium asperiores tempora minima animi a?
+        </p>
+    </section>
+
+</body>
+
+<script type="module" src="bar.js"></script>
+<script type="module" src="scroll.js"></script>
+
+</html>
