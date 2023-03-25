@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- import leaflet.js from local -->
+    <script src="leaflet.js"></script>
+    <!-- Import leaflet css from local -->
+    <link rel="stylesheet" href="leaflet.css" />
+    <!-- Import style.css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Import d3 from cdn -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Import enter-view from cdn -->
+    <script src="https://unpkg.com/enter-view@1.0.0/enter-view.min.js"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main">
+        <h2>A simple scrolly story template for maps</h2>
+        <div class="intro">
+            <p class="text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora in obcaecati quidem aliquam illo unde repellat eligendi cum. Impedit reprehenderit sunt ut. Inventore quibusdam explicabo earum mollitia, nobis consequuntur.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur explicabo dolores ex perspiciatis? Tenetur, asperiores dicta eos ut doloremque obcaecati praesentium cumque alias aperiam commodi voluptatum dolorum earum tempora suscipit?
+                Random text, Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur explicabo dolores ex perspiciatis? Tenetur, asperiores dicta eos ut doloremque obcaecati praesentium cumque alias aperiam commodi voluptatum dolorum earum tempora suscipit?
+            </p>
+        </div>
+
+        <section id='scrolly-overlay'>
+    
+            <div class='scrolly'>
+                <!--  sticky graphic   -->
+                <figure class='sticky'>
+                    <div id='map'></div>
+                </figure>
+
+                <!-- Floating boxes go here -->
+    
+            </div>
+        </section>
+
+        <div class="end-notes">
+            <p class="text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora in obcaecati quidem aliquam illo unde repellat eligendi cum. Impedit reprehenderit sunt ut. Inventore quibusdam explicabo earum mollitia, nobis consequuntur.
+            </p>
+        </div>
+    </div>
+
+    <!-- Import map.js -->
+    <script src="map.js"></script>
+    
+</body>
+</html>
