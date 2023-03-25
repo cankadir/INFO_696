@@ -56,26 +56,10 @@ h2{
     top: 25vh;
     left: 0;
   }
-#scrolly-overlay .scrolly figure.sticky .bar-outer {
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    width: 90%;
-    height: 4rem;
-    background-color: #fff;
-  }
-#scrolly-overlay .scrolly figure.sticky .bar-inner {
-    width: 10%;
-    height: 100%;
-    transition: width 1s ease-in-out;
-    background-color: #daa520;
-  }
-.bar-chart rect{
-    fill:#daa520
+
+article{
+  margin-top:200px !important;;
 }
-.bar-chart svg{margin-left:auto; margin-right:auto; display:block;}
-  
 
 #map {
     width: 100%;
