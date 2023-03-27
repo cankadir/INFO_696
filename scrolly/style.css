@@ -1,40 +1,59 @@
+/* Variables to repeat for CSS */
+:root {
+  --yellow: #daa520;
+}
+
+/* General styling */
 body{
     font-family: "Noto Sans",Arial, Helvetica, sans-serif;
 }
 h2{
-  color: #daa520;
+  color: var(--yellow);
 }
+
 .filler {
     min-height: 15rem;
     text-align: center;
   }
+
+article{
+    margin-top: 200px;
+  }
+
 #scrolly-overlay .scrolly {
     max-width: 60rem;
     margin: 3rem auto;
     background-color: #f4f4f4;
     padding: 1rem;
   }
-article{
-  margin-top: 200px;
-}
+
+/* SCROLL */
 #scrolly-overlay .scrolly article {
     padding: 0;
     max-width: 30rem;
     margin: 0 auto;
     position: relative;
   }
+
+/* General styling of the floating windows */
 #scrolly-overlay .scrolly article .step {
-    min-height: 75vh;
-    margin-bottom: 1rem;
-    margin-left: 50%;
-    margin-right: 10px;
+    min-height: 75vh; /* Distance between windows */
+    margin-bottom: 1rem; /* Distance between windows */
+    margin-left: 50%; /* Width of the floating windows in reverse */
+    margin-right: 10px; /* Width of the floating windows in reverse */
   }
+
+/* What happend to the last of the floating boxes */
 #scrolly-overlay .scrolly article .step:last-of-type {
     margin-bottom: 0;
   }
+
+/* Active floating window */
 #scrolly-overlay .scrolly article .step.is-active p {
     background-color: #008080;
   }
+
+/* Text styling in floating windows */
 #scrolly-overlay .scrolly article .step p {
     margin: 0;
     padding: 1rem;
@@ -44,15 +63,19 @@ article{
     transition: background-color 250ms ease-in-out;
     color: #f4f4f4;
   }
+
+/* Grey box behind the bar chart */
 #scrolly-overlay .scrolly figure.sticky {
     position: sticky;
     width: 100%;
-    height: 50vh;
+    height: 50vh; /* Using flex column wise sizing would have mode more sense */
     background: #969696;
     margin: 0;
-    top: 25vh;
+    top: 25vh; /* Distance of the grey box from the top of the screen */
     left: 0;
   }
+
+/* Vertical Chart Styling */
 #scrolly-overlay .scrolly figure.sticky .bar-outer {
     position: absolute;
     top: 50%;
@@ -66,10 +89,12 @@ article{
     width: 10%;
     height: 100%;
     transition: width 1s ease-in-out;
-    background-color: #daa520;
+    background-color: var(--yellow);
   }
+
+/* BAR CHART */
 .bar-chart rect{
-    fill:#daa520
+    fill: var(--yellow)
 }
 .bar-chart svg{margin-left:auto; margin-right:auto; display:block;}
   

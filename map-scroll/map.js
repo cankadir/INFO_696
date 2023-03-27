@@ -1,5 +1,4 @@
 
-
 // Manually generated data
 let data = [
     { "country": "Oakland", "what": "I was born here.", "year": 1983 , lat:'37.8044', lon:'-122.2711', photo:"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.elitetranslingo.com%2Fwp-content%2Fuploads%2F2014%2F10%2FOaklandca.jpg&f=1&nofb=1&ipt=bf19acef8fd433760bcf944d9c2b0bdcfe349a38cf9bc8965b5b6f85e3cf5447&ipo=images"},
@@ -13,10 +12,12 @@ let data = [
 ]
 
 // ----- Create a map
-//create a leaflet map
+// Set initial position to the first data point
 var map = L.map('map').setView([data[0].lat, data[0].lon], 8);
 
 //add a tile layer to the map
+// Alternative tiles: https://apidocs.geoapify.com/docs/maps/map-tiles/#about
+// Other tiles: https://leaflet-extras.github.io/leaflet-providers/preview/
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
 }).addTo(map);
@@ -26,15 +27,22 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 const scrolly = d3.select('.scrolly');
 const article = scrolly.append("article")
 
+// ---- FLOATING WINDOWS
+// Add a div for each data point
 data.forEach(function(d) {
     let step = article.append("div")
-        .attr("class","step")
-        .attr("data-index" , `${d.year}`);
+        .attr("class","step") // step is for floating windows
+        .attr("data-index" , `${d.year}`); // Year can be the unique identifier
+    
+    // To style what happens in the windows
     let stepCont = step.append("div")
         .attr("class","step-content")
+    
+    // Add Text content to window
     stepCont.append("p")
         .html( `<b>${d.country},${d.year}</b><br><br>${d.what}` )
     
+    // Add am image if there is one
     if (d.photo){
         stepCont.append("img")
             .attr("src", d.photo)
@@ -72,15 +80,36 @@ function updateChart(el) {
     }); 
     
     // Do Something.
-    // Move the map
-    map.flyTo([lat,lon], 8);
+
+    // Remove existing markers - with class country-marker
+    let all_markers = document.getElementsByClassName("country-marker");
+    for (let i = 0; i < all_markers.length; i++) {
+        all_markers[i].remove();
+    }
+
+    // Add the new marker
+    let marker = L.circle([lat,lon], {
+        fillOpacity: 0.8,
+        radius: 3500
+    }).addTo(map);
+
+    // Add class to the marker
+    marker._path.classList.add("country-marker");
+    
+    // Move the map, position and zoom
+    map.flyTo([lat,lon], 8, {
+        animate: true,
+        duration: 2
+    });
 }
 
 function init() {
 
 	enterView({
 		selector: stepSel.nodes(),
-		offset: 0.25, // When does the floating box gets activated
+        // When does the floating box gets activated
+        // Activating early - giving time for the map to fly
+		offset: 0.25, 
 		enter: el => {
 			updateChart(el);
 		},

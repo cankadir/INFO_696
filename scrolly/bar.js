@@ -1,15 +1,15 @@
+// Get data from data.js
 import data from './data.js';
 
-// Convert Object to Array
+// Convert Object(dict-like) to Array
 let data_array = []
 for (const key in data) {
-    //console.log(`${key} -> ${birds[key]}`)
     data_array.push([key,data[key]])
   }
 
 console.log( data_array );
   
-// ---- CHART
+// ---- BAR CHART with D3
 // set the dimensions and margins of the graph
 var margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 460 - margin.left - margin.right,
@@ -24,7 +24,7 @@ var svg = d3.select(".bar-chart")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-// ---- X
+// ---- X axis
 var x = d3.scaleBand()
     .range([ 0, width ])
     .domain(data_array.map(function(d) { return d[0]; }))
@@ -43,7 +43,7 @@ var y = d3.scaleLinear()
 svg.append("g")
     .call( d3.axisLeft(y) )
 
-// Bars
+// ---- Bars
 svg.selectAll("bar")
   .data(data_array)
   .enter()
@@ -53,15 +53,17 @@ svg.selectAll("bar")
     .attr("y", height)
     .attr("width", x.bandwidth())
     
-// Animate when we reach to the chart
+// ----Animate when we reach to the chart
+// -- Upward and downward functions
 const barContainer = d3.select('.bar-chart');
+
 //Animate the bars upwards
 function updateBarChart(el) {
     console.log("update bar")
     let bars = d3.selectAll(".bars")
     bars
-        .transition()
-        .duration(400)
+        .transition() // Animate
+        .duration(400) // 0.4secs
         .attr("y", function(d) { return y(d[1]); })
         .attr("height", function(d) { return height - y(d[1]); })
 }
@@ -77,6 +79,7 @@ function cancelBarChart(el) {
         .attr("height", function(d) { return height - y(0); })
 }
 
+// ---- EnterView: track the scroll position
 // Same code as the scroll function but the enter exit are changed.
 // on enter: create bars
 // on exit: remove them
@@ -84,7 +87,7 @@ function init() {
 
     enterView({
         selector: barContainer.nodes(),
-        offset: 0.5,
+        offset: 0.6, // 60% of the element cross the middle
         enter: el => {
             updateBarChart(el);
         },

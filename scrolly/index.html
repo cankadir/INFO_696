@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testing Sticky</title>
 
+    <!-- Enter View tracks the scroll -->
     <script src="https://unpkg.com/enter-view@1.0.0/enter-view.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+
+    <!-- Open Sans from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"> 
     
 </head>
 
+<!-- Data is saved to a js file -->
 <script type="module" src="data.js"></script>
 
 <body>
     
+    <!-- Header or Intro -->
     <section class='filler'>
         <h2 style="margin-top: 5rem;">
             This is a demo for sticky scrolling 
@@ -31,23 +36,27 @@
         </p>
     </section>
       
+    <!-- Scrolling elements start here -->
     <section id='scrolly-overlay'>
     
         <div class='scrolly'>
             
-            <!--  sticky graphic   -->
+            <!--  sticky graphic: This is what stays at the back   -->
             <figure class='sticky'>
                 <div class='bar-outer'>
                     <div class='bar-inner'></div>
                 </div>
             </figure>
-        
+            
             <!--  step text goes here -> from D3 -->
+            <!-- Floating windows will come here from JS as article element-->
+            <!-- const article = scrolly.append("article") -->
 
         </div>
     
     </section>
       
+    <!-- Some more test here -->
     <section class="filler">
         <p>
             Here is a chart using the same data. Same JS enter view method can be used for interacting with a single object as well. The graph is activated only when the scroll reaches the graph.
@@ -63,8 +72,10 @@
         </p>
     </section>
 
+    <!-- bar.js uses this div to build a bar chart -->
     <div class='bar-chart'></div>
 
+    <!-- Footer -->
     <section class="filler">
         <h2>
             Useful Links
@@ -82,6 +93,8 @@
 
 </body>
 
+<!-- JS files are loaded here -->
+<!-- It is important that they are loaded after the DOM elements as they make use of them, they need to be created beforehand -->
 <script type="module" src="bar.js"></script>
 <script type="module" src="scroll.js"></script>
 
